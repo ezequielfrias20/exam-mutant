@@ -1,9 +1,14 @@
-
+'''
+    Funcion que permite ver si una persona es mutante o no,
+    tiene como parametro una lista y devuelve True si es mutante
+    o False si no lo es
+'''
 def Mutant(adn):
     try:
         '''
             Funcion que permite verificar si la matriz es correcta
-            siendo NxN y que solo tenga las letras A T C G
+            siendo NxN y que solo tenga las letras A T C G.
+            Devuelve True si todo esta correcto
         '''
         def check(adn):
             contador=0
@@ -11,11 +16,11 @@ def Mutant(adn):
             for elemento in adn:
                 for letra in elemento:
                     if letra=="A" or letra=="T" or letra=="C" or letra=="G":
-                        contador=contador+1
+                        contador+=1
                 if contador!=len(adn):
                     raise Exception
                 else:
-                    verificacion=verificacion+1
+                    verificacion+=1
                     contador=0
             return verificacion==len(adn)
         '''
@@ -42,7 +47,7 @@ def Mutant(adn):
             new_adn=[]
             for i in range(len(adn)):
                 for a in range(len(adn)):
-                    vertical=vertical+adn[a][i]
+                    vertical+=adn[a][i]
                 new_adn.append(vertical)
                 vertical=""
             return is_mutant_horizontal(new_adn)
@@ -66,7 +71,7 @@ def Mutant(adn):
             new_word=""
             for i in get_diagonals(adn):        
                 for element in i:
-                    new_word=new_word+element
+                    new_word+=element
                 new.append(new_word)
                 new_word=""       
             return is_mutant_horizontal(new)
